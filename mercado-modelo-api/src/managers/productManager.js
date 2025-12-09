@@ -20,18 +20,15 @@ export default class ProductManager {
     await fs.promises.writeFile(this.path, JSON.stringify(products, null, 2));
   }
 
-  // GET ALL
   async getAll() {
     return await this.getProducts();
   }
 
-  // GET BY ID
   async getById(id) {
     const products = await this.getProducts();
     return products.find((p) => p.id == id);
   }
 
-  // CREATE PRODUCT
   async create(product) {
     const products = await this.getProducts();
 
@@ -48,14 +45,13 @@ export default class ProductManager {
     return newProduct;
   }
 
-  // UPDATE
   async update(id, data) {
     const products = await this.getProducts();
     const index = products.findIndex((p) => p.id == id);
 
     if (index === -1) return null;
 
-    delete data.id; // No permitir cambiar ID
+    delete data.id; 
 
     products[index] = { ...products[index], ...data };
     await this.saveProducts(products);
@@ -63,7 +59,6 @@ export default class ProductManager {
     return products[index];
   }
 
-  // DELETE
   async delete(id) {
     const products = await this.getProducts();
     const filtered = products.filter((p) => p.id != id);

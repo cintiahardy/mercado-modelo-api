@@ -4,13 +4,11 @@ import ProductManager from "../managers/productManager.js";
 const router = Router();
 const manager = new ProductManager("./data/products.json");
 
-// GET ALL
 router.get("/", async (req, res) => {
   const products = await manager.getAll();
   res.json(products);
 });
 
-// GET ONE
 router.get("/:pid", async (req, res) => {
   const product = await manager.getById(req.params.pid);
   if (!product) return res.status(404).json({ error: "Producto no encontrado" });
@@ -18,13 +16,11 @@ router.get("/:pid", async (req, res) => {
   res.json(product);
 });
 
-// CREATE
 router.post("/", async (req, res) => {
   const newProduct = await manager.create(req.body);
   res.status(201).json(newProduct);
 });
 
-// UPDATE
 router.put("/:pid", async (req, res) => {
   const updated = await manager.update(req.params.pid, req.body);
   if (!updated) return res.status(404).json({ error: "Producto no encontrado" });
@@ -32,7 +28,6 @@ router.put("/:pid", async (req, res) => {
   res.json(updated);
 });
 
-// DELETE
 router.delete("/:pid", async (req, res) => {
   await manager.delete(req.params.pid);
   res.json({ message: "Producto eliminado" });
