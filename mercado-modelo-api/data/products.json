@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "title": "Manzana Roja KG",
+    "description": "Manzana fresca, crocante y de primera calidad",
+    "code": "MM001",
+    "price": 1250,
+    "status": true,
+    "stock": 50,
+    "category": "Frutas",
+    "thumbnails": ["../img/manzana.jpg"]
+  },
+  {
+    "id": 2,
+    "title": "Banana Ecuador KG",
+    "description": "Bananas dulces, ideales para colaciones y licuados",
+    "code": "MM002",
+    "price": 1100,
+    "status": true,
+    "stock": 80,
+    "category": "Frutas",
+    "thumbnails": ["../img/banana.jpg"]
+  },
+  {
+    "id": 3,
+    "title": "Lechuga Criolla",
+    "description": "Lechuga fresca y lavada lista para consumir",
+    "code": "MM003",
+    "price": 900,
+    "status": true,
+    "stock": 30,
+    "category": "Verduras",
+    "thumbnails": ["../img/lechuga.jpg"]
+  },
+  {
+    "id": 4,
+    "title": "Tomate Redondo KG",
+    "description": "Tomate maduro, ideal para ensaladas y salsas",
+    "code": "MM004",
+    "price": 1400,
+    "status": true,
+    "stock": 60,
+    "category": "Verduras",
+    "thumbnails": ["../img/tomate.jpg"]
+  }
+]
