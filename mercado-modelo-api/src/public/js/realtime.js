@@ -1,25 +1,29 @@
-const socket = io();
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("✅ realtime.js cargado");
 
-const list = document.getElementById("productList");
-const form = document.getElementById("productForm");
+  const socket = io();
+  const list = document.getElementById("productsList");
+  const form = document.getElementById("productForm");
 
-socket.on("products", products => {
-  list.innerHTML = "";
-  products.forEach(p => {
-    const li = document.createElement("li");
-    li.innerText = `${p.title} - $${p.price}`;
-    list.appendChild(li);
+  socket.on("products", products => {
+    list.innerHTML = "";
+    products.forEach(p => {
+      const li = document.createElement("li");
+      li.className = "list-group-item";
+      li.innerText = `${p.title} - $${p.price}`;
+      list.appendChild(li);
+    });
   });
-});
 
-form.addEventListener("submit", e => {
-  e.preventDefault();
+  form.addEventListener("submit", e => {
+    e.preventDefault();
 
-  const product = {
-    title: document.getElementById("title").value,
-    price: document.getElementById("price").value
-  };
+    const data = {
+      title: form.title.value,
+      price: form.price.value
+    };
 
-  socket.emit("newProduct", product);
-  form.reset();
+    socket.emit("newProduct", data);
+    form.reset();
+  });
 });
